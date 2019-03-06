@@ -1,8 +1,11 @@
-
-#include "JoySimDev/JoySimDev.h"
+#include <QApplication>
+#include "JoySimDev/widgets/playground.h"
 
 int main(int argc, char* argv[])
 {
-	JoySimDev();
+  QApplication app(argc, argv);
+  Playground playground(200, 200);
+  playground.show();
+  app.exec();
 	return 0;
 }

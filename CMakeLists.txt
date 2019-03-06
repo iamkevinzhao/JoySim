@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
 project(JoySim CXX)
 
+set(CMAKE_CXX_STANDARD 11)
+
 set(JOYSIM_MAJOR_VERSION 0)
 set(JOYSIM_MINOR_VERSION 1)
 set(JOYSIM_PATCH_VERSION 0)
@@ -32,6 +34,8 @@ endforeach()
 include_directories(
   "${PROJECT_SOURCE_DIR}"   # to find JoySimDev/JoySimDev.h
   "${PROJECT_BINARY_DIR}")  # to find JoySimDev/config.h
+
+find_package(Qt5Widgets REQUIRED)
 
 # Add sub-directories
 add_subdirectory(JoySimDev)
