@@ -17,6 +17,8 @@ add_library(
       widgets/widget_base.h
       widgets/playground.cpp
       widgets/playground.h
+      widgets/robot.cpp
+      widgets/robot.h
 )
 
 target_link_libraries(

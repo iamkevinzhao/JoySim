@@ -4,7 +4,7 @@
 int main(int argc, char* argv[])
 {
   QApplication app(argc, argv);
-  Playground playground(200, 200);
+  widgets::Playground playground(200, 200);
   playground.show();
   app.exec();
 	return 0;
