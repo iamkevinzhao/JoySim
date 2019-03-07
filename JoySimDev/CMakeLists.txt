@@ -23,10 +23,14 @@ add_library(
       # sim
       sim/simulator.cpp
       sim/simulator.h
+      sim/sim_config.cpp
+      sim/sim_config.h
 
       # viz
       viz/visualizer.cpp
       viz/visualizer.h
+      viz/viz_config.cpp
+      viz/viz_config.h
 )
 
 target_link_libraries(

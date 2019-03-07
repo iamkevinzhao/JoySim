@@ -8,6 +8,23 @@ Visualizer::Visualizer()
 
 }
 
+Visualizer::~Visualizer() {
+  if (playground_) {
+    if (!playground_->parent()) {
+      delete playground_;
+      playground_ = nullptr;
+    }
+  }
+}
+
+void Visualizer::Configure(const VizConfig &config) {
+  config_ = config;
+}
+
+VizConfig Visualizer::Config() {
+  return config_;
+}
+
 void Visualizer::MoveRobot(
     const int &delta_x, const int &delta_y, const float &delta_theta) {
   auto theta = robot_->Heading();
@@ -20,9 +37,12 @@ void Visualizer::MoveRobot(
 }
 
 bool Visualizer::ConstructScene() {
-  playground_ = new widgets::Playground(400, 400);
+  int width = config_.playground_width;
+  int height = config_.playground_height;
+  playground_ =
+      new widgets::Playground(width, height);
   robot_ = new widgets::Robot(0.0f, playground_);
-  robot_->Move(200, 200);
+  robot_->Move(width / 2.0f, height / 2.0f);
   return true;
 }
 

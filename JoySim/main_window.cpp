@@ -9,9 +9,11 @@ MainWindow::MainWindow(QWidget *parent) :
 {
   ui->setupUi(this);
   simulator_.reset(new sim::Simulator);
+  sim::SimConfig config;
   std::shared_ptr<viz::Visualizer> visualizer(new viz::Visualizer);
-  visualizer->ConstructScene();
   simulator_->SetViz(visualizer);
+  simulator_->Configure(config);
+  visualizer->ConstructScene();
   AddPlayground(visualizer->PlaygroundWidget());
 }
 
