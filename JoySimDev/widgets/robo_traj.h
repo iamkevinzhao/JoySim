@@ -8,13 +8,18 @@ namespace widgets {
 class RoboTraj : public WidgetBase
 {
 public:
-  RoboTraj(const wm::Pose& from, const wm::Pose& to, QWidget* parent);
+  RoboTraj(
+    const wm::Pose& from, const wm::Pose& to, QWidget* parent,
+    const Qt::GlobalColor& dot_color = Qt::red,
+    const Qt::GlobalColor& line_color = Qt::green);
 protected:
   void paintEvent(QPaintEvent* event);
 private:
-  wm::Pose from_;
-  wm::Pose to_;
+  const wm::Pose kFrom;
+  const wm::Pose kTo;
   float radius_;
+  const Qt::GlobalColor kLineColor;
+  const Qt::GlobalColor kDotColor;
 };
 }
 
