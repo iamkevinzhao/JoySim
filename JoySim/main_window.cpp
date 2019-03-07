@@ -22,9 +22,6 @@ MainWindow::MainWindow(QWidget *parent) :
   shortcut = new QShortcut(QKeySequence("Up"), this);
   connect(
       shortcut, SIGNAL(activated()), this, SLOT(on_UpPushButton_clicked()));
-//  shortcut = new QShortcut(QKeySequence("Down"), this);
-//  connect(
-//      shortcut, SIGNAL(activated()), this, SLOT(on_DownPushButton_clicked()));
   shortcut = new QShortcut(QKeySequence("Right"), this);
   connect(
       shortcut, SIGNAL(activated()), this, SLOT(on_RightPushButton_clicked()));
@@ -32,7 +29,14 @@ MainWindow::MainWindow(QWidget *parent) :
   connect(
       shortcut, SIGNAL(activated()), this, SLOT(on_LeftPushButton_clicked()));
 
-  ui->DownPushButton->setVisible(false);
+  constexpr bool backward = false;
+  if (backward) {
+    shortcut = new QShortcut(QKeySequence("Down"), this);
+    connect(
+        shortcut, SIGNAL(activated()), this, SLOT(on_DownPushButton_clicked()));
+  } else {
+    ui->DownPushButton->setVisible(false);
+  }
 }
 
 MainWindow::~MainWindow()
