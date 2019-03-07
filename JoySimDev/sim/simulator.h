@@ -16,8 +16,8 @@ public:
   Simulator();
   bool Start();
   void Configure(const SimConfig& config);
-  void Command(
-      const int& delta_x, const int& delta_y, const float& delta_theta);
+  void March(const float& distance);
+  void Rotate(const float& angle);
   void SetViz(std::shared_ptr<viz::Visualizer> viz);
 private:
   void ConfigureVisualizer(

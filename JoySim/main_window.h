@@ -24,6 +24,14 @@ public:
 private slots:
   void on_TestPushButton_clicked();
 
+  void on_UpPushButton_clicked();
+
+  void on_LeftPushButton_clicked();
+
+  void on_DownPushButton_clicked();
+
+  void on_RightPushButton_clicked();
+
 private:
   Ui::MainWindow *ui;
   std::shared_ptr<sim::Simulator> simulator_;

@@ -1,6 +1,7 @@
 #include "simulator.h"
 #include <viz/visualizer.h>
 #include <viz/viz_config.h>
+#include <cmath>
 
 namespace sim {
 Simulator::Simulator()
@@ -31,18 +32,16 @@ void Simulator::Configure(const SimConfig &config) {
   }
 }
 
-void Simulator::Command(
-    const int &delta_x, const int &delta_y, const float &delta_theta) {
-  int x = state_.robot_x + delta_x;
-  int y = state_.robot_y + delta_y;
-  int a = state_.robot_a + delta_theta;
-  if (x >= 0 && x <= config_.playground_width) {
-    if (y >= 0 && y <= config_.playground_height) {
-      state_.robot_x = x;
-      state_.robot_y = y;
-    }
-  }
-  state_.robot_a = a;
+void Simulator::March(const float &distance) {
+  state_.robot_x =
+      state_.robot_x - distance * sin(M_PI - state_.robot_a * M_PI / 180.0f);
+  state_.robot_y =
+      state_.robot_y - distance * cos(M_PI - state_.robot_a * M_PI / 180.0f);
+  viz_->BeamRobot(state_.robot_x, state_.robot_y, state_.robot_a);
+}
+
+void Simulator::Rotate(const float &angle) {
+  state_.robot_a += angle;
   viz_->BeamRobot(state_.robot_x, state_.robot_y, state_.robot_a);
 }
 
