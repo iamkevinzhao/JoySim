@@ -2,9 +2,8 @@
 #define VIZ_VIZ_CONFIG_H
 
 namespace viz {
-class VizConfig
+struct VizConfig
 {
-public:
   int playground_width = 0;
   int playground_height = 0;
   VizConfig();

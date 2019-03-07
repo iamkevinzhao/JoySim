@@ -3,6 +3,7 @@
 
 #include <memory>
 #include "sim_config.h"
+#include "sim_state.h"
 
 namespace viz {
   class Visualizer;
@@ -13,6 +14,7 @@ class Simulator
 {
 public:
   Simulator();
+  bool Start();
   void Configure(const SimConfig& config);
   void Command(
       const int& delta_x, const int& delta_y, const float& delta_theta);
@@ -22,6 +24,7 @@ private:
       std::shared_ptr<viz::Visualizer> viz, const SimConfig& config);
   std::shared_ptr<viz::Visualizer> viz_;
   SimConfig config_;
+  SimState state_;
 };
 }
 

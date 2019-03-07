@@ -25,6 +25,8 @@ add_library(
       sim/simulator.h
       sim/sim_config.cpp
       sim/sim_config.h
+      sim/sim_state.cpp
+      sim/sim_state.h
 
       # viz
       viz/visualizer.cpp

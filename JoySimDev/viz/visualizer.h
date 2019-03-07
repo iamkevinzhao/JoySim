@@ -19,6 +19,8 @@ public:
   void Configure(const VizConfig& config);
   VizConfig Config();
   bool ConstructScene();
+  void BeamRobot(
+      const int &x, const int &y, const float &theta);
   void MoveRobot(
       const int &delta_x, const int &delta_y, const float &delta_theta);
   QWidget* PlaygroundWidget();

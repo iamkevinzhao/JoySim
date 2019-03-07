@@ -25,12 +25,30 @@ VizConfig Visualizer::Config() {
   return config_;
 }
 
+void Visualizer::BeamRobot(
+    const int &x, const int &y, const float &theta) {
+  if (!playground_) {
+    return;
+  }
+  if (robot_) {
+    delete robot_;
+  }
+  robot_ = new widgets::Robot(theta, playground_);
+  robot_->Move(x, y);
+  robot_->show();
+}
+
 void Visualizer::MoveRobot(
     const int &delta_x, const int &delta_y, const float &delta_theta) {
+  if (!playground_) {
+    return;
+  }
   auto theta = robot_->Heading();
   auto x = robot_->X();
   auto y = robot_->Y();
-  delete robot_;
+  if (robot_) {
+    delete robot_;
+  }
   robot_ = new widgets::Robot(theta + delta_theta, playground_);
   robot_->Move(x + delta_x, y + delta_y);
   robot_->show();

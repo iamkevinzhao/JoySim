@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
   simulator_->SetViz(visualizer);
   simulator_->Configure(config);
   visualizer->ConstructScene();
+  simulator_->Start();
   AddPlayground(visualizer->PlaygroundWidget());
 }
 
