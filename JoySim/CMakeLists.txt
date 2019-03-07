@@ -1,4 +1,15 @@
-add_executable(JoySim main.cpp)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+
+add_executable(
+  JoySim
+    main.cpp
+    main_window.cpp
+    main_window.h
+    main_window.ui
+)
 
 target_link_libraries(
   JoySim

@@ -1,4 +1,5 @@
 #include "playground.h"
+#include <QPainter>
 
 namespace widgets {
 Playground::Playground(const int width, const int height, QWidget *parent) :
@@ -12,6 +13,8 @@ Playground::~Playground()
 }
 
 void Playground::paintEvent(QPaintEvent *event) {
-
+  QPainter painter(this);
+  painter.setPen(QPen(Qt::green, 1));
+  painter.drawRect(0, 0, kWidth - 1, kHeight - 1);
 }
 }

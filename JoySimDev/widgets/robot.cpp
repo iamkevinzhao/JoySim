@@ -10,6 +10,7 @@ Robot::Robot(const float& heading, QWidget* parent)
   constexpr int kEmpirical = 5;
   const int kLen = kBeacon + kRadius + kEmpirical*kWeight;
   this->setFixedSize(kLen, kLen);
+  this->Move(x_, y_);
 }
 
 void Robot::paintEvent(QPaintEvent *event) {
@@ -25,6 +26,20 @@ void Robot::paintEvent(QPaintEvent *event) {
 }
 
 void Robot::Move(const int &x, const int &y) {
-  this->move(x - kCenter, y - kCenter);
+  x_ = x - kCenter;
+  y_ = y - kCenter;
+  this->move(x_, y_);
+}
+
+float Robot::Heading() {
+  return kHeading;
+}
+
+int Robot::X() {
+  return x_;
+}
+
+int Robot::Y() {
+  return y_;
 }
 }

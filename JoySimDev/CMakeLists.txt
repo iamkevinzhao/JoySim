@@ -19,6 +19,14 @@ add_library(
       widgets/playground.h
       widgets/robot.cpp
       widgets/robot.h
+
+      # sim
+      sim/simulator.cpp
+      sim/simulator.h
+
+      # viz
+      viz/visualizer.cpp
+      viz/visualizer.h
 )
 
 target_link_libraries(

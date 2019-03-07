@@ -10,6 +10,9 @@ class Robot : public WidgetBase
 public:
   Robot(const float& heading, QWidget* parent);
   void Move(const int& x, const int& y);
+  float Heading();
+  int X();
+  int Y();
 protected:
   void paintEvent(QPaintEvent *event);
 private:
@@ -19,6 +22,8 @@ private:
   const int kWeight = 2;
   const int kMargin;
   const int kCenter;
+  int x_ = 0;
+  int y_ = 0;
 };
 }
 
