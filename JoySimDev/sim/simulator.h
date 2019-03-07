@@ -10,6 +10,10 @@ namespace viz {
 }
 
 namespace sim {
+  class Engine;
+}
+
+namespace sim {
 class Simulator
 {
 public:
@@ -23,6 +27,7 @@ private:
   void ConfigureVisualizer(
       std::shared_ptr<viz::Visualizer> viz, const SimConfig& config);
   std::shared_ptr<viz::Visualizer> viz_;
+  std::shared_ptr<Engine> engine_;
   SimConfig config_;
   SimState state_;
 };

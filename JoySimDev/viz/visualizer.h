@@ -24,6 +24,13 @@ public:
   void MoveRobot(
       const int &delta_x, const int &delta_y, const float &delta_theta);
   QWidget* PlaygroundWidget();
+  void AddRobotTraj(
+      const int& from_x,
+      const int& from_y,
+      const float& from_a,
+      const int& to_x,
+      const int& to_y,
+      const float& to_a);
 private:
   widgets::Playground* playground_ = nullptr;
   widgets::Robot* robot_ = nullptr;

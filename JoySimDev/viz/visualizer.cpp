@@ -1,6 +1,7 @@
 #include "visualizer.h"
 #include <widgets/robot.h>
 #include <widgets/playground.h>
+#include <widgets/robo_traj.h>
 
 namespace viz {
 Visualizer::Visualizer()
@@ -66,5 +67,16 @@ bool Visualizer::ConstructScene() {
 
 QWidget* Visualizer::PlaygroundWidget() {
   return playground_;
+}
+
+void Visualizer::AddRobotTraj(
+    const int &from_x, const int &from_y, const float &from_a,
+    const int &to_x, const int &to_y, const float &to_a) {
+  if (!playground_) {
+    return;
+  }
+  wm::Pose from(from_x, from_y, from_a), to(to_x, to_y, to_a);
+  auto traj = new widgets::RoboTraj(from, to, playground_);
+  traj->show();
 }
 }

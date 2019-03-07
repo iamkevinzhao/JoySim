@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
   simulator_->Start();
   AddPlayground(visualizer->PlaygroundWidget());
 
+
   QShortcut* shortcut;
   shortcut = new QShortcut(QKeySequence("Up"), this);
   connect(
@@ -36,6 +37,14 @@ MainWindow::MainWindow(QWidget *parent) :
         shortcut, SIGNAL(activated()), this, SLOT(on_DownPushButton_clicked()));
   } else {
     ui->DownPushButton->setVisible(false);
+  }
+
+  constexpr bool hide_joystick = true;
+  if (hide_joystick) {
+    ui->UpPushButton->setVisible(false);
+    ui->DownPushButton->setVisible(false);
+    ui->LeftPushButton->setVisible(false);
+    ui->RightPushButton->setVisible(false);
   }
 }
 

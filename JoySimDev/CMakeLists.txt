@@ -19,6 +19,8 @@ add_library(
       widgets/playground.h
       widgets/robot.cpp
       widgets/robot.h
+      widgets/robo_traj.cpp
+      widgets/robo_traj.h
 
       # sim
       sim/simulator.cpp
@@ -27,12 +29,18 @@ add_library(
       sim/sim_config.h
       sim/sim_state.cpp
       sim/sim_state.h
+      sim/engine.cpp
+      sim/engine.h
 
       # viz
       viz/visualizer.cpp
       viz/visualizer.h
       viz/viz_config.cpp
       viz/viz_config.h
+
+      # wm
+      wm/pose.cpp
+      wm/pose.h
 )
 
 target_link_libraries(
