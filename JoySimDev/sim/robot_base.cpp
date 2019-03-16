@@ -37,4 +37,7 @@ void RobotBase::Rotate(const float &ang) {
   SimRotate(ang, a);
 }
 
+void RobotBase::SetPose(const wm::Pose &pose) {
+  state.robot_pose = pose;
+}
 }

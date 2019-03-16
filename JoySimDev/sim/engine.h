@@ -6,6 +6,7 @@ class Engine
 {
 public:
   Engine();
+  float NormRand(const float& stddev);
 //  virtual void March(
 //      const float& dist, float& sim_dist, float& sim_dev, float& sim_delta_ang);
 //  virtual void Rotate(const float& ang, float& sim_ang);

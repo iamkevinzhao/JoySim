@@ -10,8 +10,8 @@ namespace viz {
 }
 
 namespace sim {
-  class Engine;
   class Robot;
+  class Odometer;
 }
 
 namespace sim {
@@ -28,10 +28,9 @@ private:
   void ConfigureVisualizer(
       std::shared_ptr<viz::Visualizer> viz, const SimConfig& config);
   std::shared_ptr<viz::Visualizer> viz_;
-  std::shared_ptr<Engine> engine_;
   std::shared_ptr<Robot> robot_;
+  std::shared_ptr<Odometer> odom_;
   SimConfig config_;
-  // SimState state_;
 };
 }
 

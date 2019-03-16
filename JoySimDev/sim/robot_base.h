@@ -18,6 +18,7 @@ public:
       const float& dist, float& sim_dist, float& sim_dev, float& sim_delta_ang);
   void Rotate(const float& ang);
   virtual void SimRotate(const float& ang, float& sim_ang);
+  void SetPose(const wm::Pose& pose);
 protected:
   void AddTraj(const wm::Pose& prev, const wm::Pose& now);
   SimState state;

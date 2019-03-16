@@ -11,7 +11,7 @@ public:
   void SimMarch(
       const float& dist,
       float& sim_dist, float& sim_dev, float& sim_delta_ang) override;
-  void SimRotate(const float& ang, float& sim_ang);
+  void SimRotate(const float& ang, float& sim_ang) override;
   void Beam(const wm::Pose& pose);
 private:
   void UpdatePoseViz();

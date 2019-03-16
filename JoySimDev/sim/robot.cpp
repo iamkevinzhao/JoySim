@@ -14,8 +14,6 @@ void Robot::SimMarch(
   auto previous = state;
   state.robot_pose.Trans(sim_dist, sim_dev, sim_delta_ang);
   UpdatePoseViz();
-  previous.robot_pose.Print();
-  state.robot_pose.Print();
   AddTraj(previous.robot_pose, state.robot_pose);
 }
 
