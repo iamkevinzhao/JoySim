@@ -12,7 +12,9 @@ void RobotBase::SetViz(std::shared_ptr<viz::Visualizer> viz) {
 
 void RobotBase::AddTraj(const wm::Pose &prev, const wm::Pose &now) {
   if (viz) {
-    viz->AddRobotTraj(prev.ix(), prev.iy(), prev.a, now.ix(), now.iy(), now.a);
+    viz->AddRobotTraj(
+        prev.ix(), prev.iy(), prev.a,
+        now.ix(), now.iy(), now.a, traj_id_);
   }
 }
 
@@ -35,6 +37,10 @@ void RobotBase::SimRotate(const float& ang, float& sim_ang) {
 void RobotBase::Rotate(const float &ang) {
   float a;
   SimRotate(ang, a);
+}
+
+void RobotBase::SetTrajID(const int &id) {
+  traj_id_ = id;
 }
 
 void RobotBase::SetPose(const wm::Pose &pose) {

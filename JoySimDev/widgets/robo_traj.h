@@ -12,6 +12,8 @@ public:
     const wm::Pose& from, const wm::Pose& to, QWidget* parent,
     const Qt::GlobalColor& dot_color = Qt::red,
     const Qt::GlobalColor& line_color = Qt::green);
+  static Qt::GlobalColor DotColorByID(const int& id);
+  static Qt::GlobalColor LineColorByID(const int& id);
 protected:
   void paintEvent(QPaintEvent* event);
 private:

@@ -4,7 +4,7 @@
 namespace sim {
 Odometer::Odometer()
 {
-
+  SetTrajID(2);
 }
 
 void Odometer::SimMarch(

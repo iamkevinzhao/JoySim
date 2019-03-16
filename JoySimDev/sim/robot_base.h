@@ -19,10 +19,12 @@ public:
   void Rotate(const float& ang);
   virtual void SimRotate(const float& ang, float& sim_ang);
   void SetPose(const wm::Pose& pose);
+  void SetTrajID(const int& id);
 protected:
   void AddTraj(const wm::Pose& prev, const wm::Pose& now);
   SimState state;
   std::shared_ptr<viz::Visualizer> viz;
+  int traj_id_ = 0;
 };
 }
 

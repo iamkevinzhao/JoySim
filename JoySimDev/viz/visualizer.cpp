@@ -72,11 +72,21 @@ QWidget* Visualizer::PlaygroundWidget() {
 void Visualizer::AddRobotTraj(
     const int &from_x, const int &from_y, const float &from_a,
     const int &to_x, const int &to_y, const float &to_a) {
+  AddRobotTraj(from_x, from_y, from_a, to_x, to_y, to_a, 0);
+}
+
+void Visualizer::AddRobotTraj(
+    const int &from_x, const int &from_y, const float &from_a,
+    const int &to_x, const int &to_y, const float &to_a, const int &id) {
   if (!playground_) {
     return;
   }
   wm::Pose from(from_x, from_y, from_a), to(to_x, to_y, to_a);
-  auto traj = new widgets::RoboTraj(from, to, playground_);
+  auto traj =
+      new widgets::RoboTraj(
+          from, to, playground_,
+          widgets::RoboTraj::DotColorByID(id),
+          widgets::RoboTraj::LineColorByID(id));
   traj->show();
 }
 }
