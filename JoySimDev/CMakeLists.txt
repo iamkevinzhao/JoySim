@@ -12,6 +12,10 @@ add_library(
       JoySimDev.h
       config.h.in
 
+      # wm
+      wm/pose.cpp
+      wm/pose.h
+
       # widgets
       widgets/widget_base.cpp
       widgets/widget_base.h
@@ -31,16 +35,18 @@ add_library(
       sim/sim_state.h
       sim/engine.cpp
       sim/engine.h
+      sim/robot.cpp
+      sim/robot.h
+      sim/odometer.cpp
+      sim/odometer.h
+      sim/robot_base.cpp
+      sim/robot_base.h
 
       # viz
       viz/visualizer.cpp
       viz/visualizer.h
       viz/viz_config.cpp
       viz/viz_config.h
-
-      # wm
-      wm/pose.cpp
-      wm/pose.h
 )
 
 target_link_libraries(

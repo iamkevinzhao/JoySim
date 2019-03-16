@@ -3,7 +3,7 @@
 
 #include <memory>
 #include "sim_config.h"
-#include "sim_state.h"
+// #include "sim_state.h"
 
 namespace viz {
   class Visualizer;
@@ -11,6 +11,7 @@ namespace viz {
 
 namespace sim {
   class Engine;
+  class Robot;
 }
 
 namespace sim {
@@ -28,8 +29,9 @@ private:
       std::shared_ptr<viz::Visualizer> viz, const SimConfig& config);
   std::shared_ptr<viz::Visualizer> viz_;
   std::shared_ptr<Engine> engine_;
+  std::shared_ptr<Robot> robot_;
   SimConfig config_;
-  SimState state_;
+  // SimState state_;
 };
 }
 

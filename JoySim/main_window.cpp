@@ -46,6 +46,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->LeftPushButton->setVisible(false);
     ui->RightPushButton->setVisible(false);
   }
+
+  ui->TestPushButton->setVisible(false);
 }
 
 MainWindow::~MainWindow()

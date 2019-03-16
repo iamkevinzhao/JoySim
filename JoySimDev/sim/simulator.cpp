@@ -3,19 +3,29 @@
 #include <viz/viz_config.h>
 #include <cmath>
 #include "engine.h"
+#include "robot.h"
 
 namespace sim {
 Simulator::Simulator()
 {
   engine_.reset(new Engine);
+  robot_.reset(new Robot);
 }
 
 bool Simulator::Start() {
-  state_.robot_x = config_.playground_width / 2.0f;
-  state_.robot_y = config_.playground_height / 2.0f;
-  state_.robot_a = 0.0f;
-  if (viz_) {
-    viz_->BeamRobot(state_.robot_x, state_.robot_y, state_.robot_a);
+//  state_.robot_x = config_.playground_width / 2.0f;
+//  state_.robot_y = config_.playground_height / 2.0f;
+//  state_.robot_a = 0.0f;
+//  if (viz_) {
+//    viz_->BeamRobot(state_.robot_x, state_.robot_y, state_.robot_a);
+//  }
+
+  if (robot_) {
+    robot_->Beam(
+        wm::Pose(
+            config_.playground_width / 2.0f,
+            config_.playground_height / 2.0f,
+            0.0f));
   }
 }
 
@@ -34,31 +44,41 @@ void Simulator::Configure(const SimConfig &config) {
 }
 
 void Simulator::March(const float &distance) {
-  auto prev_state = state_;
-  float sim_dist, sim_dev, sim_delta_ang;
-  engine_->March(distance, sim_dist, sim_dev, sim_delta_ang);
-  state_.robot_x
-      -= sim_dist * sin(M_PI - (state_.robot_a + sim_dev) * M_PI / 180.0f);
-  state_.robot_y
-      -= sim_dist * cos(M_PI - (state_.robot_a + sim_dev) * M_PI / 180.0f);
-  state_.robot_a += sim_delta_ang;
-  if (viz_) {
-    viz_->BeamRobot(state_.robot_x, state_.robot_y, state_.robot_a);
-    viz_->AddRobotTraj(
-        prev_state.robot_x, prev_state.robot_y, prev_state.robot_a,
-        state_.robot_x, state_.robot_y, state_.robot_a);
+//  auto prev_state = state_;
+//  float sim_dist, sim_dev, sim_delta_ang;
+//  engine_->March(distance, sim_dist, sim_dev, sim_delta_ang);
+//  state_.robot_x
+//      -= sim_dist * sin(M_PI - (state_.robot_a + sim_dev) * M_PI / 180.0f);
+//  state_.robot_y
+//      -= sim_dist * cos(M_PI - (state_.robot_a + sim_dev) * M_PI / 180.0f);
+//  state_.robot_a += sim_delta_ang;
+//  if (viz_) {
+//    viz_->BeamRobot(state_.robot_x, state_.robot_y, state_.robot_a);
+//    viz_->AddRobotTraj(
+//        prev_state.robot_x, prev_state.robot_y, prev_state.robot_a,
+//        state_.robot_x, state_.robot_y, state_.robot_a);
+//  }
+
+  if (robot_) {
+    robot_->March(distance);
   }
 }
 
 void Simulator::Rotate(const float &angle) {
-  float sim_ang;
-  engine_->Rotate(angle, sim_ang);
-  state_.robot_a += sim_ang;
-  viz_->BeamRobot(state_.robot_x, state_.robot_y, state_.robot_a);
+//  float sim_ang;
+//  engine_->Rotate(angle, sim_ang);
+//  state_.robot_a += sim_ang;
+//  viz_->BeamRobot(state_.robot_x, state_.robot_y, state_.robot_a);
+  if (robot_) {
+    robot_->Rotate(angle);
+  }
 }
 
 void Simulator::SetViz(std::shared_ptr<viz::Visualizer> vis) {
   viz_ = vis;
+  if (robot_) {
+    robot_->SetViz(viz_);
+  }
 }
 
 void Simulator::ConfigureVisualizer(
