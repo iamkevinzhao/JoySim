@@ -3,7 +3,7 @@
 
 #include <memory>
 #include "sim_config.h"
-// #include "sim_state.h"
+#include <vector>
 
 namespace viz {
   class Visualizer;
@@ -29,7 +29,7 @@ private:
       std::shared_ptr<viz::Visualizer> viz, const SimConfig& config);
   std::shared_ptr<viz::Visualizer> viz_;
   std::shared_ptr<Robot> robot_;
-  std::shared_ptr<Odometer> odom_;
+  std::vector<std::shared_ptr<Odometer>> odoms_;
   SimConfig config_;
 };
 }

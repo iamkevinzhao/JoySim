@@ -87,6 +87,24 @@ void Visualizer::AddRobotTraj(
           from, to, playground_,
           widgets::RoboTraj::DotColorByID(id),
           widgets::RoboTraj::LineColorByID(id));
+  robot_trajs_[id].push_back(traj);
   traj->show();
+}
+
+void Visualizer::ShowRobotTrajByID(const int &id, const bool &show) {
+  if (!robot_trajs_.count(id)) {
+    return;
+  }
+  auto& traj = robot_trajs_[id];
+  for (auto& step : traj) {
+    if (!step) {
+      continue;
+    }
+    if (show) {
+      step->show();
+    } else {
+      step->hide();
+    }
+  }
 }
 }

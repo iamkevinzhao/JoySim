@@ -10,24 +10,30 @@ namespace sim {
 Simulator::Simulator()
 {
   robot_.reset(new Robot);
-  odom_.reset(new Odometer);
+  std::shared_ptr<Odometer> odom;
+  odom.reset(new Odometer);
+  odom->SetTrajID(1);
+  odoms_.push_back(odom);
+  odom.reset(new Odometer);
+  odom->SetTrajID(2);
+  odoms_.push_back(odom);
+//  odom.reset(new Odometer);
+//  odom->SetTrajID(3);
+//  odoms_.push_back(odom);
 }
 
 bool Simulator::Start() {
+  auto beam_x = config_.playground_width / 2.0f;
+  auto beam_y = config_.playground_height / 2.0f;
+  auto beam_a = 0.0f;
   if (robot_) {
-    robot_->Beam(
-        wm::Pose(
-            config_.playground_width / 2.0f,
-            config_.playground_height / 2.0f,
-            0.0f));
+    robot_->Beam(wm::Pose(beam_x, beam_y, beam_a));
   }
 
-  if (odom_) {
-    odom_->SetPose(
-        wm::Pose(
-            config_.playground_width / 2.0f,
-            config_.playground_height / 2.0f,
-            0.0f));
+  for (auto& odom : odoms_) {
+    if (odom) {
+      odom->SetPose(wm::Pose(beam_x, beam_y, beam_a));
+    }
   }
 }
 
@@ -49,8 +55,10 @@ void Simulator::March(const float &distance) {
   if (robot_) {
     robot_->March(distance);
   }
-  if (odom_) {
-    odom_->March(distance);
+  for (auto& odom : odoms_) {
+    if (odom) {
+      odom->March(distance);
+    }
   }
 }
 
@@ -58,8 +66,10 @@ void Simulator::Rotate(const float &angle) {
   if (robot_) {
     robot_->Rotate(angle);
   }
-  if (odom_) {
-    odom_->Rotate(angle);
+  for (auto& odom : odoms_) {
+    if (odom) {
+      odom->Rotate(angle);
+    }
   }
 }
 
@@ -68,8 +78,10 @@ void Simulator::SetViz(std::shared_ptr<viz::Visualizer> vis) {
   if (robot_) {
     robot_->SetViz(viz_);
   }
-  if (odom_) {
-    odom_->SetViz(viz_);
+  for (auto& odom : odoms_) {
+    if (odom) {
+      odom->SetViz(viz_);
+    }
   }
 }
 

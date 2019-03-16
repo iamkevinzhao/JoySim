@@ -8,6 +8,10 @@ namespace sim {
   class Simulator;
 }
 
+namespace viz {
+  class Visualizer;
+}
+
 namespace Ui {
   class MainWindow;
 }
@@ -35,6 +39,7 @@ private slots:
 private:
   Ui::MainWindow *ui;
   std::shared_ptr<sim::Simulator> simulator_;
+  std::shared_ptr<viz::Visualizer> visualizer_;
 
 };
 

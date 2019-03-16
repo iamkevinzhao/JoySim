@@ -24,10 +24,9 @@ Qt::GlobalColor RoboTraj::DotColorByID(const int& id) {
 Qt::GlobalColor RoboTraj::LineColorByID(const int& id) {
   switch (id) {
   case 0: return Qt::green;
-  case 1: return Qt::gray;
-  case 2: return Qt::cyan;
-  case 3: return Qt::yellow;
-  default: return Qt::magenta;
+  case 1: return Qt::magenta;
+  case 2: return Qt::darkYellow;
+  default: return Qt::gray;
   }
 }
 

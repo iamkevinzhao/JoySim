@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
   visualizer->ConstructScene();
   simulator_->Start();
   AddPlayground(visualizer->PlaygroundWidget());
+  visualizer_ = visualizer;
 
 
   QShortcut* shortcut;
@@ -47,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->RightPushButton->setVisible(false);
   }
 
-  ui->TestPushButton->setVisible(false);
+  // ui->TestPushButton->setVisible(false);
 }
 
 MainWindow::~MainWindow()
@@ -61,7 +62,11 @@ void MainWindow::AddPlayground(QWidget *playground) {
 
 void MainWindow::on_TestPushButton_clicked()
 {
-
+  if (visualizer_) {
+    static bool show = true;
+    show = !show;
+    visualizer_->ShowRobotTrajByID(1, show);
+  }
 }
 
 void MainWindow::on_UpPushButton_clicked()

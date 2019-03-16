@@ -10,11 +10,10 @@ Odometer::Odometer()
 void Odometer::SimMarch(
     const float& dist,
     float& sim_dist, float& sim_dev, float& sim_delta_ang) {
-  auto d = NormRand(1.0f);
+  auto d = NormRand(2.0f);
   sim_dist = dist + d;
   auto dv = NormRand(10.0f);
   sim_dev = dv;
-  std::cout << d << " " << dv << std::endl;
   sim_delta_ang = 0.0f;
   auto previous = state;
   state.robot_pose.Trans(sim_dist, sim_dev, sim_delta_ang);
