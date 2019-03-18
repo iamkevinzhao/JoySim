@@ -1,21 +1,21 @@
 ## JoySim -- A Simple Multi-Sensor Simulator
 
-### Overview
+#### Overview
 
 JoySim is a simple multi-sensor simulator for verifying sensor-fusing algorithms such as Kalman Filters and the Covariance Project Filter. 
 
-### Dependencies
+#### Dependencies
 
 - Qt 5.9
 - C++11
 
-### Version
+#### Version
 
 - v1.0.0
 
-### Author
+#### Author
 
-Kevin ZHAO
+- Kevin ZHAO
 
 **Supervisor** Lee Sukhan
 
