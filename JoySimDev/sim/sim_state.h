@@ -1,7 +1,7 @@
 #ifndef SIM_SIM_STATE_H
 #define SIM_SIM_STATE_H
 
-#include <wm/pose.h>
+#include <JoySimDev/wm/pose.h>
 
 namespace sim {
 struct SimState

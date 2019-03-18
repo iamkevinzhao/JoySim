@@ -10,22 +10,6 @@ namespace sim {
 Simulator::Simulator()
 {
   robot_.reset(new Robot);
-  std::shared_ptr<Odometer> odom;
-  odom.reset(new Odometer);
-  odom->SetTrajID(2);
-  odoms_.push_back(odom);
-  odom.reset(new Odometer);
-  odom->SetTrajID(3);
-  odoms_.push_back(odom);
-  odom.reset(new Odometer);
-  odom->SetTrajID(4);
-  odoms_.push_back(odom);
-  odom.reset(new Odometer);
-  odom->SetTrajID(5);
-  odoms_.push_back(odom);
-  odom.reset(new Odometer);
-  odom->SetTrajID(6);
-  odoms_.push_back(odom);
 }
 
 bool Simulator::Start() {
@@ -89,6 +73,15 @@ void Simulator::SetViz(std::shared_ptr<viz::Visualizer> vis) {
       odom->SetViz(viz_);
     }
   }
+}
+
+void Simulator::AddOdometer(std::shared_ptr<Odometer> odom) {
+  if (!odom) {
+    return;
+  }
+  odom->SetTrajID(odoms_.size() + 2);
+  odoms_.push_back(odom);
+
 }
 
 void Simulator::ConfigureVisualizer(

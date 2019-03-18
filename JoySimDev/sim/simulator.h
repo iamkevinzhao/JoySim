@@ -24,6 +24,7 @@ public:
   void March(const float& distance);
   void Rotate(const float& angle);
   void SetViz(std::shared_ptr<viz::Visualizer> viz);
+  void AddOdometer(std::shared_ptr<Odometer> odom);
 private:
   void ConfigureVisualizer(
       std::shared_ptr<viz::Visualizer> viz, const SimConfig& config);

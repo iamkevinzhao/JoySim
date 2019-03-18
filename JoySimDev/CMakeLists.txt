@@ -25,6 +25,8 @@ add_library(
       widgets/robot.h
       widgets/robo_traj.cpp
       widgets/robo_traj.h
+      widgets/odom_config.cpp
+      widgets/odom_config.h
 
       # sim
       sim/simulator.cpp
@@ -41,6 +43,10 @@ add_library(
       sim/odometer.h
       sim/robot_base.cpp
       sim/robot_base.h
+      sim/engine_config.cpp
+      sim/engine_config.h
+      sim/odom_config.cpp
+      sim/odom_config.h
 
       # viz
       viz/visualizer.cpp

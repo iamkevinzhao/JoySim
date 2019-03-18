@@ -89,6 +89,9 @@ void Visualizer::AddRobotTraj(
           widgets::RoboTraj::LineColorByID(id));
   robot_trajs_[id].push_back(traj);
   traj->show();
+  if (id != 0) {
+    traj->lower();
+  }
 }
 
 void Visualizer::ShowRobotTrajByID(const int &id, const bool &show) {

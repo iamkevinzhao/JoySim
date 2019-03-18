@@ -12,6 +12,10 @@ namespace viz {
   class Visualizer;
 }
 
+namespace widgets {
+  class OdomConfig;
+}
+
 namespace Ui {
   class MainWindow;
 }
@@ -36,11 +40,15 @@ private slots:
 
   void on_RightPushButton_clicked();
 
+  void on_AddSensorPushButton_clicked();
+
+  void on_StartPushButton_clicked();
+
 private:
   Ui::MainWindow *ui;
   std::shared_ptr<sim::Simulator> simulator_;
   std::shared_ptr<viz::Visualizer> visualizer_;
-
+  std::vector<widgets::OdomConfig*> odoms_;
 };
 
 #endif // MAIN_WINDOW_H

@@ -3,9 +3,9 @@
 
 #include "engine.h"
 #include "sim_state.h"
-#include "wm/pose.h"
+#include <JoySimDev/wm/pose.h>
 #include <memory>
-#include <viz/visualizer.h>
+#include <JoySimDev/viz/visualizer.h>
 
 namespace sim {
 class RobotBase : public Engine

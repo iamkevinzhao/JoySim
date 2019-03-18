@@ -3,21 +3,14 @@
 #include <JoySimDev/sim/simulator.h>
 #include <JoySimDev/viz/visualizer.h>
 #include <QShortcut>
+#include <JoySimDev/widgets/odom_config.h>
+#include <JoySimDev/sim/odometer.h>
 
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
   ui(new Ui::MainWindow)
 {
   ui->setupUi(this);
-  simulator_.reset(new sim::Simulator);
-  sim::SimConfig config;
-  std::shared_ptr<viz::Visualizer> visualizer(new viz::Visualizer);
-  simulator_->SetViz(visualizer);
-  simulator_->Configure(config);
-  visualizer->ConstructScene();
-  simulator_->Start();
-  AddPlayground(visualizer->PlaygroundWidget());
-  visualizer_ = visualizer;
 
 
   QShortcut* shortcut;
@@ -48,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->RightPushButton->setVisible(false);
   }
 
-  // ui->TestPushButton->setVisible(false);
+   ui->TestPushButton->setVisible(false);
 }
 
 MainWindow::~MainWindow()
@@ -87,4 +80,47 @@ void MainWindow::on_DownPushButton_clicked()
 void MainWindow::on_RightPushButton_clicked()
 {
   simulator_->Rotate(10);
+}
+
+void MainWindow::on_AddSensorPushButton_clicked()
+{
+  std::shared_ptr<sim::Odometer> odom(new sim::Odometer);
+  auto widget = new widgets::OdomConfig(this);
+  ui->SensorSourceGridLayout->addWidget(widget);
+  widget->LinkOdom(odom);
+  odoms_.push_back(widget);
+  widget->SetOdomID(odoms_.size());
+}
+
+void MainWindow::on_StartPushButton_clicked()
+{
+  ui->StartPushButton->setDisabled(true);
+
+  for (auto widget : odoms_) {
+    if (widget) {
+      widget->Configure();
+    }
+  }
+
+  simulator_.reset(new sim::Simulator);
+  for (auto widget : odoms_) {
+    if (widget) {
+      simulator_->AddOdometer(widget->Odom());
+    }
+  }
+  sim::SimConfig config;
+  std::shared_ptr<viz::Visualizer> visualizer(new viz::Visualizer);
+  simulator_->SetViz(visualizer);
+  simulator_->Configure(config);
+  visualizer->ConstructScene();
+  simulator_->Start();
+  AddPlayground(visualizer->PlaygroundWidget());
+  visualizer_ = visualizer;
+
+  for (auto widget : odoms_) {
+    if (widget) {
+      widget->setDisabled(true);
+    }
+  }
+  ui->AddSensorPushButton->setDisabled(true);
 }
