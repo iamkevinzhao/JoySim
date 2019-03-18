@@ -12,14 +12,20 @@ Simulator::Simulator()
   robot_.reset(new Robot);
   std::shared_ptr<Odometer> odom;
   odom.reset(new Odometer);
-  odom->SetTrajID(1);
-  odoms_.push_back(odom);
-  odom.reset(new Odometer);
   odom->SetTrajID(2);
   odoms_.push_back(odom);
-//  odom.reset(new Odometer);
-//  odom->SetTrajID(3);
-//  odoms_.push_back(odom);
+  odom.reset(new Odometer);
+  odom->SetTrajID(3);
+  odoms_.push_back(odom);
+  odom.reset(new Odometer);
+  odom->SetTrajID(4);
+  odoms_.push_back(odom);
+  odom.reset(new Odometer);
+  odom->SetTrajID(5);
+  odoms_.push_back(odom);
+  odom.reset(new Odometer);
+  odom->SetTrajID(6);
+  odoms_.push_back(odom);
 }
 
 bool Simulator::Start() {
