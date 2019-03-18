@@ -5,6 +5,7 @@
 #include "engine.h"
 #include "robot.h"
 #include "odometer.h"
+#include <config.h>
 
 namespace sim {
 Simulator::Simulator()
@@ -82,6 +83,10 @@ void Simulator::AddOdometer(std::shared_ptr<Odometer> odom) {
   odom->SetTrajID(odoms_.size() + 2);
   odoms_.push_back(odom);
 
+}
+
+std::string Simulator::Version() {
+  return JOYSIM_VERSION_STRING;
 }
 
 void Simulator::ConfigureVisualizer(

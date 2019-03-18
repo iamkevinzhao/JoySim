@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
   ui->setupUi(this);
 
+  this->setWindowTitle(
+      "JoySim " + QString::fromStdString(sim::Simulator::Version()));
 
   QShortcut* shortcut;
   shortcut = new QShortcut(QKeySequence("Up"), this);
