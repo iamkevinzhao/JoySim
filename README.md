@@ -8,6 +8,7 @@ JoySim is a simple multi-sensor simulator for verifying sensor-fusing algorithms
 
 - Qt 5.9
 - C++11
+- CMake 2.8.1
 
 #### Version
 
