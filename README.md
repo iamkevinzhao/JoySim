@@ -17,7 +17,7 @@ JoySim is a simple multi-sensor simulator for verifying sensor-fusing algorithms
 
 - Kevin ZHAO
 
-**Supervisor** Lee Sukhan
+- **Supervisor** Lee Sukhan
 
 Sungkyunkwan University.
 
