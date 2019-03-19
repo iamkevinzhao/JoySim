@@ -3,9 +3,10 @@
 
 #include <JoySimDev/sim/robot_base.h>
 #include "odom_config.h"
+#include <JoySimDev/export.h>
 
 namespace sim {
-class Odometer : public RobotBase {
+class API Odometer : public RobotBase {
 public:
   Odometer();
   void Configure(const OdomConfig& config);

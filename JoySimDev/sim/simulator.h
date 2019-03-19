@@ -4,6 +4,7 @@
 #include <memory>
 #include "sim_config.h"
 #include <vector>
+#include <JoySimDev/export.h>
 
 namespace viz {
   class Visualizer;
@@ -15,7 +16,7 @@ namespace sim {
 }
 
 namespace sim {
-class Simulator
+class API Simulator
 {
 public:
   Simulator();

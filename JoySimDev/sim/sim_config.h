@@ -1,8 +1,10 @@
 #ifndef SIM_SIM_CONFIG_H
 #define SIM_SIM_CONFIG_H
 
+#include <JoySimDev/export.h>
+
 namespace sim {
-struct SimConfig
+struct API SimConfig
 {
   int playground_width = 400;
   int playground_height = 400;

@@ -4,6 +4,7 @@
 #include "viz_config.h"
 #include <unordered_map>
 #include <list>
+#include <JoySimDev/export.h>
 
 namespace widgets {
   class Robot;
@@ -14,7 +15,7 @@ namespace widgets {
 class QWidget;
 
 namespace viz {
-class Visualizer
+class API Visualizer
 {
 public:
   Visualizer();

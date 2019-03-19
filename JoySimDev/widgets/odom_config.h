@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <memory>
+#include <JoySimDev/export.h>
 
 class QLabel;
 class QLineEdit;
@@ -13,7 +14,7 @@ namespace sim {
 }
 
 namespace widgets {
-class OdomConfig : public QWidget
+class API OdomConfig : public QWidget
 {
   Q_OBJECT
 public:

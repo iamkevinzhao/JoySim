@@ -26,6 +26,7 @@ bool Simulator::Start() {
       odom->SetPose(wm::Pose(beam_x, beam_y, beam_a));
     }
   }
+  return true;
 }
 
 void Simulator::Configure(const SimConfig &config) {
