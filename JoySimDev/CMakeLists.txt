@@ -49,6 +49,8 @@ add_library(
       sim/odom_config.h
       sim/odometry.cpp
       sim/odometry.h
+      sim/odom_primitive.cpp
+      sim/odom_primitive.h
 
       # viz
       viz/visualizer.cpp

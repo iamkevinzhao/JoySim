@@ -6,6 +6,7 @@
 #include <JoySimDev/widgets/odom_config.h>
 #include <JoySimDev/sim/odometer.h>
 #include <iostream>
+#include <CPFDev/CPF/odom_fusion.h>
 
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
@@ -46,12 +47,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
   ui->TestPushButton->setVisible(false);
 
-  sim::Odometry odom;
-  odom.x = 1.0f;
-  odom.roll = 90;
-//  std::cout << odom.TransMat().translation() << std::endl;
-  odom.TransMat();
-  odom.CovMat();
+  fusion_.reset(new cpf::OdomFusion);
 }
 
 MainWindow::~MainWindow()
@@ -75,6 +71,18 @@ void MainWindow::on_TestPushButton_clicked()
 void MainWindow::on_UpPushButton_clicked()
 {
   simulator_->March(-10);
+  auto odoms = simulator_->GetOdometers();
+  fusion_->Reset();
+  for (auto odom : odoms) {
+    if (!odom) {
+      continue;
+    }
+    sim::OdomPrimitive od = odom->GetOdomPrimitive();
+    fusion_->AddOdom(od.StateVec(), od.CovMat());
+  }
+  Eigen::Vector2f estimation;
+  Eigen::Matrix2f covariance;
+  fusion_->Fuse(estimation, covariance);
 }
 
 void MainWindow::on_LeftPushButton_clicked()

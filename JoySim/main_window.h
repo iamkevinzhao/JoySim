@@ -16,6 +16,10 @@ namespace widgets {
   class OdomConfig;
 }
 
+namespace cpf {
+  class OdomFusion;
+}
+
 namespace Ui {
   class MainWindow;
 }
@@ -49,6 +53,7 @@ private:
   std::shared_ptr<sim::Simulator> simulator_;
   std::shared_ptr<viz::Visualizer> visualizer_;
   std::vector<widgets::OdomConfig*> odoms_;
+  std::shared_ptr<cpf::OdomFusion> fusion_;
 };
 
 #endif // MAIN_WINDOW_H

@@ -14,6 +14,7 @@ add_executable(
 target_link_libraries(
   JoySim
     JoySimDev
+    CPFDev
     Qt5::Widgets
 )
 

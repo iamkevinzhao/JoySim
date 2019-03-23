@@ -7,6 +7,8 @@ add_library(
       # cpf
       CPF/cpf.h
       CPF/cpf.cpp
+      CPF/odom_fusion.h
+      CPF/odom_fusion.cpp
 )
 
 set_target_properties(CPFDev PROPERTIES

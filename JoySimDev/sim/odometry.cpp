@@ -14,6 +14,7 @@ Cov6 Odometry::CovMat() {
   cov(3, 3) = var_pitch;
   cov(4, 4) = var_yaw;
   cov(5, 5) = var_roll;
+  return cov;
 }
 
 Transform Odometry::TransMat() {
