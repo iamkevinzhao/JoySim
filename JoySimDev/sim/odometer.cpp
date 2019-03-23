@@ -14,6 +14,8 @@ void Odometer::Configure(const OdomConfig &config) {
 void Odometer::SimMarch(
     const float& dist,
     float& sim_dist, float& sim_dev, float& sim_delta_ang) {
+  SaveStateToPrev();
+
   auto d = NormRand(config_.dis_dev);
   sim_dist = dist + d;
   auto dv = NormRand(config_.rot_dev);
@@ -25,6 +27,8 @@ void Odometer::SimMarch(
 }
 
 void Odometer::SimRotate(const float& ang, float& sim_ang) {
+  SaveStateToPrev();
+
   sim_ang = ang;
   state.robot_pose.a += sim_ang;
 }

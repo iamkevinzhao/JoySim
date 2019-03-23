@@ -38,16 +38,18 @@ include_directories(
   "${PROJECT_BINARY_DIR}")  # to find JoySimDev/config.h
 
 find_package(Qt5Widgets REQUIRED)
+find_package(Eigen3 REQUIRED)
 
 # Add sub-directories
 add_subdirectory(JoySimDev)
 add_subdirectory(JoySim)
+add_subdirectory(CPFDev)
 
 # The interesting stuff goes here
 # ===============================
 
 # Add all targets to the build-tree export set
-export(TARGETS JoySimDev JoySim
+export(TARGETS JoySimDev JoySim CPFDev
   FILE "${PROJECT_BINARY_DIR}/JoySimTargets.cmake")
 
 # Export the package for use from the build-tree

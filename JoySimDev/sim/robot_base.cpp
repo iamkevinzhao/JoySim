@@ -3,7 +3,7 @@
 namespace sim {
 RobotBase::RobotBase()
 {
-
+  SaveStateToPrev();
 }
 
 void RobotBase::SetViz(std::shared_ptr<viz::Visualizer> viz) {
@@ -45,5 +45,9 @@ void RobotBase::SetTrajID(const int &id) {
 
 void RobotBase::SetPose(const wm::Pose &pose) {
   state.robot_pose = pose;
+}
+
+void RobotBase::SaveStateToPrev() {
+  prev_state = state;
 }
 }

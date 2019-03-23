@@ -21,8 +21,10 @@ public:
   void SetPose(const wm::Pose& pose);
   void SetTrajID(const int& id);
 protected:
+  void SaveStateToPrev();
   void AddTraj(const wm::Pose& prev, const wm::Pose& now);
   SimState state;
+  SimState prev_state;
   std::shared_ptr<viz::Visualizer> viz;
   int traj_id_ = 0;
 };

@@ -8,6 +8,8 @@ Robot::Robot()
 
 void Robot::SimMarch(
     const float &dist, float &sim_dist, float &sim_dev, float &sim_delta_ang) {
+  SaveStateToPrev();
+
   sim_dist = dist;
   sim_dev = 0.0f;
   sim_delta_ang = 0.0f;
@@ -18,6 +20,8 @@ void Robot::SimMarch(
 }
 
 void Robot::SimRotate(const float &ang, float &sim_ang) {
+  SaveStateToPrev();
+
   sim_ang = ang;
   state.robot_pose.a += sim_ang;
   UpdatePoseViz();

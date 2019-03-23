@@ -4,6 +4,7 @@
 #include <JoySimDev/sim/robot_base.h>
 #include "odom_config.h"
 #include <JoySimDev/export.h>
+#include "odometry.h"
 
 namespace sim {
 class API Odometer : public RobotBase {
@@ -14,6 +15,7 @@ public:
       const float& dist,
       float& sim_dist, float& sim_dev, float& sim_delta_ang) override;
   void SimRotate(const float& ang, float& sim_ang) override;
+  Odometry GetOdometry();
 private:
   OdomConfig config_;
 };

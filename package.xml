@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package>
+  <name>JoySim</name>
+  <version>0.0.0</version>
+  <description>JoySim</description>
+  <maintainer email="hecheng.zhao@outlook.com">Kevin ZHAO</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>cmake</buildtool_depend>
+
+  <export>
+    <build_type>cmake</build_type>
+  </export>
+</package>

@@ -86,6 +86,10 @@ void Simulator::AddOdometer(std::shared_ptr<Odometer> odom) {
 
 }
 
+std::vector<std::shared_ptr<Odometer>> Simulator::GetOdometers() {
+  return odoms_;
+}
+
 std::string Simulator::Version() {
   return JOYSIM_VERSION_STRING;
 }

@@ -47,6 +47,8 @@ add_library(
       sim/engine_config.h
       sim/odom_config.cpp
       sim/odom_config.h
+      sim/odometry.cpp
+      sim/odometry.h
 
       # viz
       viz/visualizer.cpp
@@ -58,6 +60,7 @@ add_library(
 target_link_libraries(
   JoySimDev
     Qt5::Widgets
+    # Eigen3::Eigen
 )
 
 set_target_properties(JoySimDev PROPERTIES

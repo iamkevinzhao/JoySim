@@ -27,6 +27,7 @@ public:
   void SetViz(std::shared_ptr<viz::Visualizer> viz);
   void AddOdometer(std::shared_ptr<Odometer> odom);
   static std::string Version();
+  std::vector<std::shared_ptr<Odometer>> GetOdometers();
 private:
   void ConfigureVisualizer(
       std::shared_ptr<viz::Visualizer> viz, const SimConfig& config);

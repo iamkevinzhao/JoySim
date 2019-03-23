@@ -5,6 +5,7 @@
 #include <QShortcut>
 #include <JoySimDev/widgets/odom_config.h>
 #include <JoySimDev/sim/odometer.h>
+#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
@@ -43,7 +44,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->RightPushButton->setVisible(false);
   }
 
-   ui->TestPushButton->setVisible(false);
+  ui->TestPushButton->setVisible(false);
+
+  sim::Odometry odom;
+  odom.x = 1.0f;
+  odom.roll = 90;
+//  std::cout << odom.TransMat().translation() << std::endl;
+  odom.TransMat();
+  odom.CovMat();
 }
 
 MainWindow::~MainWindow()
