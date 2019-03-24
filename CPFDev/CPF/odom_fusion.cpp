@@ -44,8 +44,12 @@ bool OdomFusion::Fuse(
   }
   Eigen::MatrixXf M = SpliceMatVert(matrices);
 
-  Eigen::MatrixXf x_tilde = M * (M.transpose() * P.inverse() * M).inverse() * M.transpose() * P.inverse() * x_hat;
-  Eigen::MatrixXf P_tilde = M * (M.transpose() * P.inverse() * M).inverse() * M.transpose();
+  Eigen::MatrixXf P_tilde =
+      M * (M.transpose() * P.inverse() * M).inverse() * M.transpose();
+  Eigen::VectorXf x_tilde = P_tilde * P.inverse() * x_hat;
+
+  measurement = CutOffFromVector(x_tilde, sources_[0].measurement.rows());
+  covariance = CutOffFromMatrix(P_tilde, sources_[0].covariance.rows());
   return true;
 }
 }

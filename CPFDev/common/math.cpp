@@ -42,7 +42,7 @@ Eigen::MatrixXf SpliceMatVert(const std::vector<Eigen::MatrixXf>& mats) {
       cols = mat.cols();
     }
   }
-  Eigen::MatrixXf matrix = Eigen::MatrixXf(rows, cols);
+  Eigen::MatrixXf matrix = Eigen::MatrixXf::Zero(rows, cols);
   int index = 0;
   for (auto& mat : mats) {
     for (int i = 0; i < mat.rows(); ++i) {
@@ -53,4 +53,28 @@ Eigen::MatrixXf SpliceMatVert(const std::vector<Eigen::MatrixXf>& mats) {
     index += mat.rows();
   }
   return matrix;
+}
+
+Eigen::VectorXf CutOffFromVector(const Eigen::VectorXf& vector, const int& size) {
+  Eigen::VectorXf result = Eigen::VectorXf::Zero(size);
+  for (int i = 0; i < size; ++i) {
+    result(i) = vector(i);
+  }
+  return result;
+}
+
+Eigen::MatrixXf CutOffFromMatrix(
+    const Eigen::MatrixXf& matrix, const int& size) {
+  return CutOffFromMatrix(matrix, size, size);
+}
+
+Eigen::MatrixXf CutOffFromMatrix(
+    const Eigen::MatrixXf& matrix, const int& row, const int& col) {
+  Eigen::MatrixXf result = Eigen::MatrixXf::Zero(row, col);
+  for (int i = 0; i < row; ++i) {
+    for (int j = 0; j < col; ++j) {
+      result(i, j) = matrix(i, j);
+    }
+  }
+  return result;
 }

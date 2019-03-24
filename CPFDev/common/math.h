@@ -10,4 +10,13 @@ Eigen::MatrixXf SpliceMatDiag(const std::vector<Eigen::MatrixXf>& mats);
 
 Eigen::MatrixXf SpliceMatVert(const std::vector<Eigen::MatrixXf>& mats);
 
+Eigen::VectorXf CutOffFromVector(
+    const Eigen::VectorXf& vector, const int& size);
+
+Eigen::MatrixXf CutOffFromMatrix(
+    const Eigen::MatrixXf& matrix, const int& size);
+
+Eigen::MatrixXf CutOffFromMatrix(
+    const Eigen::MatrixXf& matrix, const int& row, const int& col);
+
 #endif // COMMON_MATH_H
