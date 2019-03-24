@@ -7,6 +7,7 @@
 #include <JoySimDev/sim/odometer.h>
 #include <iostream>
 #include <CPFDev/CPF/odom_fusion.h>
+#include <JoySimDev/sim/trajectory_estimate.h>
 
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
@@ -83,6 +84,7 @@ void MainWindow::on_UpPushButton_clicked()
   Eigen::Vector2f estimation;
   Eigen::Matrix2f covariance;
   fusion_->Fuse(estimation, covariance);
+  traj_->Move(estimation(0), estimation(1));
 }
 
 void MainWindow::on_LeftPushButton_clicked()
@@ -114,6 +116,8 @@ void MainWindow::on_StartPushButton_clicked()
 {
   ui->StartPushButton->setDisabled(true);
 
+  traj_.reset(new sim::TrajectoryEstimate);
+
   for (auto widget : odoms_) {
     if (widget) {
       widget->Configure();
@@ -126,6 +130,9 @@ void MainWindow::on_StartPushButton_clicked()
       simulator_->AddOdometer(widget->Odom());
     }
   }
+
+  simulator_->AddRobotPart(traj_);
+
   sim::SimConfig config;
   std::shared_ptr<viz::Visualizer> visualizer(new viz::Visualizer);
   simulator_->SetViz(visualizer);
@@ -135,10 +142,32 @@ void MainWindow::on_StartPushButton_clicked()
   AddPlayground(visualizer->PlaygroundWidget());
   visualizer_ = visualizer;
 
+  traj_->SetViz(visualizer);
+
   for (auto widget : odoms_) {
     if (widget) {
       widget->setDisabled(true);
     }
   }
   ui->AddSensorPushButton->setDisabled(true);
+}
+
+void MainWindow::on_ShowPlotPushButton_clicked()
+{
+  const QString kShow = "Show Plot";
+  const QString kHide = "Hide Plot";
+  bool show;
+  if (ui->ShowPlotPushButton->text() == kShow) {
+    ui->ShowPlotPushButton->setText(kHide);
+    show = true;
+  } else {
+    ui->ShowPlotPushButton->setText(kShow);
+    show = false;
+  }
+  for (auto& odom : odoms_) {
+    auto od = odom->Odom();
+    if (od) {
+      visualizer_->ShowRobotTrajByID(od->GetTrajID(), show);
+    }
+  }
 }

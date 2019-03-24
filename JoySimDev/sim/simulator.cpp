@@ -26,6 +26,12 @@ bool Simulator::Start() {
       odom->SetPose(wm::Pose(beam_x, beam_y, beam_a));
     }
   }
+
+  for (auto& part : robot_parts_) {
+    if (part) {
+      part->SetPose(wm::Pose(beam_x, beam_y, beam_a));
+    }
+  }
   return true;
 }
 
@@ -63,6 +69,11 @@ void Simulator::Rotate(const float &angle) {
       odom->Rotate(angle);
     }
   }
+  for (auto& part : robot_parts_) {
+    if (part) {
+      part->Rotate(angle);
+    }
+  }
 }
 
 void Simulator::SetViz(std::shared_ptr<viz::Visualizer> vis) {
@@ -83,7 +94,10 @@ void Simulator::AddOdometer(std::shared_ptr<Odometer> odom) {
   }
   odom->SetTrajID(odoms_.size() + 2);
   odoms_.push_back(odom);
+}
 
+void Simulator::AddRobotPart(std::shared_ptr<RobotBase> part) {
+  robot_parts_.push_back(part);
 }
 
 std::vector<std::shared_ptr<Odometer>> Simulator::GetOdometers() {

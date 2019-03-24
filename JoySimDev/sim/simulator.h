@@ -13,6 +13,7 @@ namespace viz {
 namespace sim {
   class Robot;
   class Odometer;
+  class RobotBase;
 }
 
 namespace sim {
@@ -28,12 +29,14 @@ public:
   void AddOdometer(std::shared_ptr<Odometer> odom);
   static std::string Version();
   std::vector<std::shared_ptr<Odometer>> GetOdometers();
+  void AddRobotPart(std::shared_ptr<RobotBase> part);
 private:
   void ConfigureVisualizer(
       std::shared_ptr<viz::Visualizer> viz, const SimConfig& config);
   std::shared_ptr<viz::Visualizer> viz_;
   std::shared_ptr<Robot> robot_;
   std::vector<std::shared_ptr<Odometer>> odoms_;
+  std::vector<std::shared_ptr<RobotBase>> robot_parts_;
   SimConfig config_;
 };
 }

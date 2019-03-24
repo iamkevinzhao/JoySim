@@ -50,6 +50,13 @@
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QPushButton" name="ShowPlotPushButton">
+          <property name="text">
+           <string>Hide Plot</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </item>
       <item>

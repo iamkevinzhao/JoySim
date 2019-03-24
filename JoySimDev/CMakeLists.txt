@@ -51,6 +51,8 @@ add_library(
       sim/odometry.h
       sim/odom_primitive.cpp
       sim/odom_primitive.h
+      sim/trajectory_estimate.cpp
+      sim/trajectory_estimate.h
 
       # viz
       viz/visualizer.cpp

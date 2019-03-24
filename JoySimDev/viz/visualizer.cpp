@@ -2,6 +2,7 @@
 #include <widgets/robot.h>
 #include <widgets/playground.h>
 #include <widgets/robo_traj.h>
+#include <iostream>
 
 namespace viz {
 Visualizer::Visualizer()

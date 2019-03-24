@@ -20,6 +20,7 @@ public:
   virtual void SimRotate(const float& ang, float& sim_ang);
   void SetPose(const wm::Pose& pose);
   void SetTrajID(const int& id);
+  int GetTrajID();
 protected:
   void SaveStateToPrev();
   void AddTraj(const wm::Pose& prev, const wm::Pose& now);

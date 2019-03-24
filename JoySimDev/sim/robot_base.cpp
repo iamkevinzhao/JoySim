@@ -1,4 +1,5 @@
 #include "robot_base.h"
+#include <iostream>
 
 namespace sim {
 RobotBase::RobotBase()
@@ -41,6 +42,10 @@ void RobotBase::Rotate(const float &ang) {
 
 void RobotBase::SetTrajID(const int &id) {
   traj_id_ = id;
+}
+
+int RobotBase::GetTrajID() {
+  return traj_id_;
 }
 
 void RobotBase::SetPose(const wm::Pose &pose) {

@@ -6,6 +6,7 @@
 
 namespace sim {
   class Simulator;
+  class TrajectoryEstimate;
 }
 
 namespace viz {
@@ -48,12 +49,15 @@ private slots:
 
   void on_StartPushButton_clicked();
 
+  void on_ShowPlotPushButton_clicked();
+
 private:
   Ui::MainWindow *ui;
   std::shared_ptr<sim::Simulator> simulator_;
   std::shared_ptr<viz::Visualizer> visualizer_;
   std::vector<widgets::OdomConfig*> odoms_;
   std::shared_ptr<cpf::OdomFusion> fusion_;
+  std::shared_ptr<sim::TrajectoryEstimate> traj_;
 };
 
 #endif // MAIN_WINDOW_H
