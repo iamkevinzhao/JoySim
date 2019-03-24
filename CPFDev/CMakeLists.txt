@@ -9,6 +9,15 @@ add_library(
       CPF/cpf.cpp
       CPF/odom_fusion.h
       CPF/odom_fusion.cpp
+
+      # math
+      common/math.cpp
+      common/math.h
+)
+
+target_link_libraries(
+  CPFDev
+    # Eigen3::Eigen
 )
 
 set_target_properties(CPFDev PROPERTIES
