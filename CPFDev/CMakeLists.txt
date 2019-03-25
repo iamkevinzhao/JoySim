@@ -10,9 +10,13 @@ add_library(
       CPF/odom_fusion.h
       CPF/odom_fusion.cpp
 
-      # math
+      # common
       common/math.cpp
       common/math.h
+      common/chi_square_table.cpp
+      common/chi_square_table.h
+      common/utils.cpp
+      common/utils.h
 )
 
 target_link_libraries(

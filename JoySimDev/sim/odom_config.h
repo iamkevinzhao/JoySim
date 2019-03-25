@@ -8,7 +8,7 @@ namespace sim {
 struct API OdomConfig : public EngineConfig
 {
   float rot_dev = 10.0f;
-  float dis_dev = 2.0f;
+  float dis_dev = 2.5f;
 
   OdomConfig();
 };
