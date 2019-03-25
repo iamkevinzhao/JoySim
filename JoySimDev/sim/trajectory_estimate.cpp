@@ -17,4 +17,12 @@ void TrajectoryEstimate::SimRotate(const float& ang, float& sim_ang) {
   sim_ang = ang;
   state.robot_pose.a += sim_ang;
 }
+
+void TrajectoryEstimate::AddAnomalyTraj(const wm::Pose& prev, const wm::Pose& now) {
+  if (viz) {
+    viz->AddRobotTraj(
+        prev.ix(), prev.iy(), prev.a,
+        now.ix(), now.iy(), now.a, 101);
+  }
+}
 }

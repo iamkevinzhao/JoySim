@@ -74,7 +74,7 @@ void MainWindow::on_UpPushButton_clicked()
   simulator_->March(-10);
   auto odoms = simulator_->GetOdometers();
   fusion_->Reset();
-  for (auto odom : odoms) {
+  for (auto& odom : odoms) {
     if (!odom) {
       continue;
     }
@@ -83,8 +83,15 @@ void MainWindow::on_UpPushButton_clicked()
   }
   Eigen::Vector2f estimation;
   Eigen::Matrix2f covariance;
-  fusion_->Fuse(estimation, covariance);
+  cpf::Result result;
+  fusion_->Fuse(estimation, covariance, result);
   traj_->Move(estimation(0), estimation(1));
+  for (auto& outlier : result.outlier_info) {
+    auto odom = odoms[outlier.id];
+    wm::Pose prev, now;
+    odom->GetOdomPoses(prev, now);
+    traj_->AddAnomalyTraj(prev, now);
+  }
 }
 
 void MainWindow::on_LeftPushButton_clicked()
@@ -134,6 +141,7 @@ void MainWindow::on_StartPushButton_clicked()
   simulator_->AddRobotPart(traj_);
 
   sim::SimConfig config;
+  config.ReadINI();
   std::shared_ptr<viz::Visualizer> visualizer(new viz::Visualizer);
   simulator_->SetViz(visualizer);
   simulator_->Configure(config);
@@ -168,6 +176,7 @@ void MainWindow::on_ShowPlotPushButton_clicked()
     auto od = odom->Odom();
     if (od) {
       visualizer_->ShowRobotTrajByID(od->GetTrajID(), show);
+      visualizer_->ShowRobotTrajByID(101, show);
     }
   }
 }

@@ -5,6 +5,14 @@
 
 namespace widgets {
 RoboTraj::RoboTraj(
+    const wm::Pose &from, const wm::Pose &to, QWidget *parent, const int &id)
+  : RoboTraj(from, to, parent, DotColorByID(id), LineColorByID(id)) {
+  if (id != 0 && id != 101) {
+    this->lower();
+  }
+}
+
+RoboTraj::RoboTraj(
     const wm::Pose& from, const wm::Pose& to, QWidget* parent,
     const Qt::GlobalColor& dot_color,
     const Qt::GlobalColor& line_color)
@@ -18,6 +26,7 @@ Qt::GlobalColor RoboTraj::DotColorByID(const int& id) {
   switch (id) {
   case 0: return Qt::red;
   case 1: return Qt::blue;
+  case 101: return Qt::red;
   default: return Qt::white;
   }
 }
@@ -26,6 +35,7 @@ Qt::GlobalColor RoboTraj::LineColorByID(const int& id) {
   switch (id) {
   case 0: return Qt::green;
   case 1: return Qt::magenta;
+  case 101: return Qt::red;
   default: return Qt::gray;
   }
 }

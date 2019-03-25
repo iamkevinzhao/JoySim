@@ -85,14 +85,9 @@ void Visualizer::AddRobotTraj(
   wm::Pose from(from_x, from_y, from_a), to(to_x, to_y, to_a);
   auto traj =
       new widgets::RoboTraj(
-          from, to, playground_,
-          widgets::RoboTraj::DotColorByID(id),
-          widgets::RoboTraj::LineColorByID(id));
+          from, to, playground_, id);
   robot_trajs_[id].push_back(traj);
   traj->show();
-  if (id != 0) {
-    traj->lower();
-  }
 }
 
 void Visualizer::ShowRobotTrajByID(const int &id, const bool &show) {

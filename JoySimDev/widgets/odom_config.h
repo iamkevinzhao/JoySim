@@ -30,8 +30,10 @@ private:
   QLabel* name_;
   QLabel* dis_label_;
   QLabel* rot_label_;
+  QLabel* anom_prcnt_label_;
   QLineEdit* dis_dev_;
   QLineEdit* rot_dev_;
+  QLineEdit* anom_prcnt_;
   QPushButton* delete_;
   std::shared_ptr<sim::Odometer> odom_;
 };

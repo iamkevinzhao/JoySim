@@ -6,6 +6,7 @@
 namespace cpf {
 struct Source {
   Source();
+  int id = 0;
   Eigen::MatrixXf state;
   Eigen::MatrixXf covariance;
 };

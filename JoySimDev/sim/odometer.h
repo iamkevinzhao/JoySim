@@ -18,6 +18,7 @@ public:
   void SimRotate(const float& ang, float& sim_ang) override;
   Odometry GetOdometry();
   OdomPrimitive GetOdomPrimitive();
+  void GetOdomPoses(wm::Pose& prev, wm::Pose& now);
 private:
   OdomConfig config_;
   OdomPrimitive odom_prim_;

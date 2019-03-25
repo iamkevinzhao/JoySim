@@ -16,9 +16,13 @@ void Odometer::SimMarch(
     float& sim_dist, float& sim_dev, float& sim_delta_ang) {
   SaveStateToPrev();
 
-  auto d = NormRand(config_.dis_dev) + (Anomaly(1.0f) ? 10.0f : 0.0f);
+  auto d =
+      NormRand(config_.dis_dev) -
+      (Anomaly(config_.anomaly_precentage) ? config_.anomaly_degree : 0.0f);
   sim_dist = dist + d;
-  auto dv = NormRand(config_.rot_dev) + (Anomaly(1.0f) ? 10.0f : 0.0f);
+  auto dv =
+      NormRand(config_.rot_dev) +
+      (Anomaly(config_.anomaly_precentage) ? config_.anomaly_degree : 0.0f);
   sim_dev = dv;
 
   // update odom_prim_
@@ -56,5 +60,10 @@ Odometry Odometer::GetOdometry() {
 
 OdomPrimitive Odometer::GetOdomPrimitive() {
   return odom_prim_;
+}
+
+void Odometer::GetOdomPoses(wm::Pose &prev, wm::Pose &now) {
+  now = state.robot_pose;
+  prev = prev_state.robot_pose;
 }
 }

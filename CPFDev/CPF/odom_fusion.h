@@ -13,6 +13,9 @@ public:
   void Reset();
   void AddOdom(Eigen::Vector2f measurement, Eigen::Matrix2f covariance);
   bool Fuse(Eigen::Vector2f& measurement, Eigen::Matrix2f& covariance);
+  bool Fuse(
+      Eigen::Vector2f& measurement, Eigen::Matrix2f& covariance,
+      Result& result);
 private:
 //  struct Source {
 //    Eigen::Vector2f measurement;

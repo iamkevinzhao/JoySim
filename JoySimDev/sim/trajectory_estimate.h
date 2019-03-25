@@ -10,6 +10,7 @@ public:
   TrajectoryEstimate();
   void Move(const float& dist, const float& rot);
   void SimRotate(const float& ang, float& sim_ang) override;
+  void AddAnomalyTraj(const wm::Pose& prev, const wm::Pose& now);
 };
 }
 

@@ -9,6 +9,8 @@ class RoboTraj : public WidgetBase
 {
 public:
   RoboTraj(
+    const wm::Pose& from, const wm::Pose& to, QWidget* parent, const int& id);
+  RoboTraj(
     const wm::Pose& from, const wm::Pose& to, QWidget* parent,
     const Qt::GlobalColor& dot_color = Qt::red,
     const Qt::GlobalColor& line_color = Qt::green);

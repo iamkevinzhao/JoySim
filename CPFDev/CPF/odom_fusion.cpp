@@ -20,17 +20,25 @@ void OdomFusion::AddOdom(
   Source source;
   source.state = measurement;
   source.covariance = covariance;
+  source.id = sources_.size();
   sources_.push_back(source);
 }
 
 bool OdomFusion::Fuse(
-    Eigen::Vector2f &measurement, Eigen::Matrix2f &covariance) {
-  auto result = CPFCore::Fuse(sources_);
+    Eigen::Vector2f &measurement, Eigen::Matrix2f &covariance,
+    Result &result) {
+  result = CPFCore::Fuse(sources_);
   if (!result.success) {
     return false;
   }
   measurement = result.fused.state;
   covariance = result.fused.covariance;
+  return true;
+}
+
+bool OdomFusion::Fuse(
+    Eigen::Vector2f &measurement, Eigen::Matrix2f &covariance) {
+
 #if 0
   if (sources_.empty()) {
     return false;
