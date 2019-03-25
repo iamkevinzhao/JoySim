@@ -16,9 +16,9 @@ void Odometer::SimMarch(
     float& sim_dist, float& sim_dev, float& sim_delta_ang) {
   SaveStateToPrev();
 
-  auto d = NormRand(config_.dis_dev);
+  auto d = NormRand(config_.dis_dev) + (Anomaly(1.0f) ? 10.0f : 0.0f);
   sim_dist = dist + d;
-  auto dv = NormRand(config_.rot_dev);
+  auto dv = NormRand(config_.rot_dev) + (Anomaly(1.0f) ? 10.0f : 0.0f);
   sim_dev = dv;
 
   // update odom_prim_

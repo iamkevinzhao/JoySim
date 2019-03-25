@@ -9,6 +9,12 @@ add_library(
       CPF/cpf.cpp
       CPF/odom_fusion.h
       CPF/odom_fusion.cpp
+      CPF/cpf_core.cpp
+      CPF/cpf_core.h
+      CPF/source.cpp
+      CPF/source.h
+      CPF/result.cpp
+      CPF/result.h
 
       # common
       common/math.cpp

@@ -3,9 +3,10 @@
 
 #include <eigen3/Eigen/Core>
 #include <vector>
+#include "cpf_core.h"
 
 namespace cpf {
-class OdomFusion
+class OdomFusion : public CPFCore
 {
 public:
   OdomFusion();
@@ -13,10 +14,10 @@ public:
   void AddOdom(Eigen::Vector2f measurement, Eigen::Matrix2f covariance);
   bool Fuse(Eigen::Vector2f& measurement, Eigen::Matrix2f& covariance);
 private:
-  struct Source {
-    Eigen::Vector2f measurement;
-    Eigen::Matrix2f covariance;
-  };
+//  struct Source {
+//    Eigen::Vector2f measurement;
+//    Eigen::Matrix2f covariance;
+//  };
   std::vector<Source> sources_;
 };
 }
