@@ -6,9 +6,10 @@
 #include <JoySimDev/wm/pose.h>
 #include <memory>
 #include <JoySimDev/viz/visualizer.h>
+#include <JoySimDev/export.h>
 
 namespace sim {
-class RobotBase : public Engine
+class API RobotBase : public Engine
 {
 public:
   RobotBase();

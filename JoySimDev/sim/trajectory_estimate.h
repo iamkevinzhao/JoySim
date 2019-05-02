@@ -2,9 +2,10 @@
 #define SIM_TRAJECTORY_ESTIMATE_H
 
 #include "robot_base.h"
+#include <JoySimDev/export.h>
 
 namespace sim {
-class TrajectoryEstimate : public RobotBase
+class API TrajectoryEstimate : public RobotBase
 {
 public:
   TrajectoryEstimate();

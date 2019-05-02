@@ -18,5 +18,6 @@ bool SimConfig::ReadINI(const QString &name) {
   playground_height =
       settings.value(
           kRegion + "/playground_height", playground_height).toInt(&ok);
+  return ok;
 }
 }

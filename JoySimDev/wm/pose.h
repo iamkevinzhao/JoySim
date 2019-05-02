@@ -1,8 +1,10 @@
 #ifndef WM_POSE_H
 #define WM_POSE_H
 
+#include <JoySimDev/export.h>
+
 namespace wm {
-struct Pose
+struct API Pose
 {
   Pose();
   Pose(const float& x, const float& y, const float& a);

@@ -3,9 +3,10 @@
 
 #include "source.h"
 #include <vector>
+#include <CPFDev/export.h>
 
 namespace cpf {
-struct Result
+struct API Result
 {
   Result();
   bool success = true;

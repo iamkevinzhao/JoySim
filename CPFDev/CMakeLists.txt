@@ -1,6 +1,7 @@
 add_library(
   CPFDev
     SHARED
+      export.h
       CPFDev.h
       CPFDev.cpp
 

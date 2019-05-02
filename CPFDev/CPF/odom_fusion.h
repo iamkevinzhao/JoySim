@@ -4,9 +4,10 @@
 #include <eigen3/Eigen/Core>
 #include <vector>
 #include "cpf_core.h"
+#include <CPFDev/export.h>
 
 namespace cpf {
-class OdomFusion : public CPFCore
+class API OdomFusion : public CPFCore
 {
 public:
   OdomFusion();

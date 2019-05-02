@@ -4,9 +4,10 @@
 #include <vector>
 #include "source.h"
 #include "result.h"
+#include <CPFDev/export.h>
 
 namespace cpf {
-class CPFCore
+class API CPFCore
 {
 public:
   CPFCore();

@@ -38,7 +38,8 @@ include_directories(
   "${PROJECT_BINARY_DIR}")  # to find JoySimDev/config.h
 
 find_package(Qt5Widgets REQUIRED)
-find_package(Eigen3 REQUIRED)
+find_package(Eigen3)
+include_directories(${Eigen3_INCLUDE_DIRS})
 
 # Add sub-directories
 add_subdirectory(JoySimDev)

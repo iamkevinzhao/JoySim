@@ -2,9 +2,10 @@
 #define SIM_ODOM_PRIMITIVE_H
 
 #include <eigen3/Eigen/Core>
+#include <JoySimDev/export.h>
 
 namespace sim {
-struct OdomPrimitive
+struct API OdomPrimitive
 {
   OdomPrimitive();
   float d = 0.0f;
